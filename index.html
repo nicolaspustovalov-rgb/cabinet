@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chirurgien dentiste — Dr. Pustovalov Minh Thao</title>
+  <meta name="description" content="Cabinet dentaire — Chirurgie, esthétique, prothèses, urgence. Prise en charge adulte et enfant." />
+  <style>
+    /* ====== VARIABLES & RESET ====== */
+    :root{
+      --primary:#0b6b6f;
+      --accent:#f3a712;
+      --muted:#6b7280;
+      --bg:#f8fafb;
+      --card:#ffffff;
+      --radius:14px;
+      --maxwidth:1100px;
+      --gutter:20px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* ====== LAYOUT ====== */
+    .container{max-width:var(--maxwidth);margin:24px auto;padding:0 16px}
+
+    header.site-header{
+      display:flex;align-items:center;gap:16px;padding:18px 0;
+    }
+    .logo{
+      width:78px;height:78px;border-radius:12px;background:linear-gradient(135deg,var(--primary),#0f9da0);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px;box-shadow:0 6px 18px rgba(11,107,111,0.12);
+    }
+    .brand{display:flex;flex-direction:column}
+    .brand .name{font-weight:700;font-size:20px}
+    .brand .address{color:var(--muted);font-size:14px}
+
+    /* ====== HERO / CAROUSEL ====== */
+    .hero{margin-top:8px;background:linear-gradient(180deg,rgba(255,255,255,0.6),transparent);padding:18px;border-radius:18px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start}
+
+    /* Carousel */
+    .carousel{position:relative;overflow:hidden;border-radius:12px;height:360px;background:linear-gradient(180deg,#e9f6f6,#ffffff)}
+    .slides{display:flex;height:100%;transition:transform 700ms cubic-bezier(.2,.9,.2,1)}
+    .slide{min-width:100%;height:100%;display:block;background-size:cover;background-position:center}
+    .carousel .controls{position:absolute;left:12px;right:12px;top:12px;display:flex;justify-content:space-between;pointer-events:none}
+    .carousel button{pointer-events:auto;background:rgba(255,255,255,0.85);border:none;padding:8px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,0.08);cursor:pointer}
+    .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:flex;gap:8px}
+    .dots button{width:10px;height:10px;border-radius:999px;border:none}
+
+    /* Info card */
+    .info{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.06)}
+    .info h1{margin:0;font-size:20px}
+    .info p{margin:8px 0;color:var(--muted)}
+    .info .cta{display:inline-flex;gap:8px;align-items:center;margin-top:12px}
+    .btn{background:var(--primary);color:white;padding:10px 14px;border-radius:10px;border:none;cursor:pointer}
+    .btn.ghost{background:transparent;color:var(--primary);border:1px solid rgba(11,107,111,0.12)}
+
+    /* ====== SERVICES ====== */
+    .services{margin-top:22px}
+    .section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.04);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+    .card:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(2,6,23,0.08)}
+    .card h3{margin:0 0 6px 0;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* DETAIL PAGES (single page hash sections) */
+    main.details{margin-top:20px}
+    .detail-page{display:none;padding:18px;background:var(--card);border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.04)}
+    .detail-page.active{display:block}
+    .detail-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .detail-photos{display:flex;flex-wrap:wrap;gap:8px}
+    .detail-photos img{width:100%;max-width:220px;border-radius:10px;object-fit:cover}
+
+    /* FOOTER */
+    footer{margin-top:22px;padding:18px;color:var(--muted);font-size:14px;text-align:center}
+
+    /* RESPONSIVE */
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
+      .detail-grid{grid-template-columns:1fr}
+      .carousel{height:260px}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .slides{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="logo" aria-hidden="true">CD</div>
+      <div class="brand">
+        <div class="name">Dr. Pustovalov Minh Thao — Chirurgien dentiste-cabinet Dentaire Confort</div>
+        <div class="address">60 Rte d'Excenevex, 74140 Sciez</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:13px;color:var(--muted)">Tél: +33 4 50 72 65 76</div>
+        <div style="font-size:13px;color:var(--muted)">Email: dentaireconfort@gmail.com</div>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Présentation du cabinet">
+      <div class="hero-grid">
+        <div>
+          <div class="carousel" id="carousel" aria-roledescription="carousel">
+            <div class="slides" id="slides">
+              <!-- 7 placeholder images (replace with vos propres photos) -->
+              <div class="slide" style="background-image:url('https://blush-madeleine-51.tiiny.site/IMG_0652.jpg')" aria-hidden="false"></div>
+              <div class="slide" style="background-image:url('https://blush-madeleine-51.tiiny.site/IMG_0650.jpg')"></div>
+              <div class="slide" style="background-image:url('https://blush-madeleine-51.tiiny.site/IMG_0651.jpg')"></div>
+              <div class="slide" style="background-image:url('https://blush-madeleine-51.tiiny.site/IMG_0653.jpg')"></div>
+            </div>
+
+            <div class="controls" aria-hidden="true">
+              <button id="prev" title="Photo précédente">◀</button>
+              <button id="next" title="Photo suivante">▶</button>
+            </div>
+
+            <div class="dots" id="dots" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <aside class="info" aria-label="Informations cabinet">
+          <h1>Cabinet Dentaire Confort — Dr. Pustovalov Minh Thao</h1>
+          <p><strong>Adresse :</strong> 60 Rte d'Excenevex, 74140 Sciez</p>
+          <p><strong>Téléphone :</strong> +33 4 50 72 65 76</p>
+          <p>Spécialités: Chirurgie & implantologie, Parodontologie, Esthétique, Prothèses, Soins pédiatriques.</p>
+
+        </aside>
+      </div>
+
+      <div class="services" aria-label="Prestations">
+        <div class="section-title">
+          <h2 style="margin:0">Nos prestations</h2>
+          <div style="color:var(--muted);font-size:13px">Cliquez pour voir la page détaillée</div>
+        </div>
+
+        <div class="grid" id="services-grid">
+          <!-- Cards generated in HTML for accessibility purposes -->
+          <article class="card" data-target="chirurgie"><h3>Chirurgie et implant dentaire</h3><p>Implants, greffes, chirurgie oral.</p></article>
+          <article class="card" data-target="parodontologie"><h3>Parodontologie</h3><p>Traitement des gencives, maintenance parodontale.</p></article>
+          <article class="card" data-target="esthetique"><h3>Esthétique dentaire</h3><p>Blanchiment, facettes, redesign du sourire.</p></article>
+          <article class="card" data-target="prothese"><h3>Prothese dentaire</h3><p>Prothèses amovibles et fixes, bridges, couronnes.</p></article>
+          <article class="card" data-target="caries"><h3>Traitement des caries</h3><p>Obturations esthétiques et restaurations durables.</p></article>
+          <article class="card" data-target="devitalisation"><h3>Dévitalisation et extraction</h3><p>Traitements endodontiques et extractions sous anesthésie locale.</p></article>
+          <article class="card" data-target="pediatrie"><h3>Soins pédiatriques</h3><p>Suivi des enfants, prévention et éducation.</p></article>
+          <article class="card" data-target="meopa"><h3>Gaz de détente — MEOPA</h3><p>Sédation consciente (MEOPA) pour patients anxieux.</p></article>
+          <article class="card" data-target="urgence"><h3>Urgence dentaire</h3><p>Prise en charge rapide des douleurs et traumatismes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <main class="details" id="details">
+      <!-- Detail pages (hash-targeted). Chaque "page" a un id correspondant au data-target. -->
+
+      <article id="chirurgie" class="detail-page" aria-labelledby="chirurgie-title">
+        <h2 id="chirurgie-title">Chirurgie et implant dentaire</h2>
+        <div class="detail-grid">
+          <div>
+            <section id="chirurgie-implant-dentaire" className="p-6 bg-gray-50 rounded-lg shadow-md mb-8">
+  
+  
+  <h3 className="text-xl font-semibold mb-2">Qu’est-ce qu’un implant dentaire ?</h3>
+  <p className="mb-4">
+    L’implant dentaire est un dispositif en titane ressemblant à une vis, qui sert de racine artificielle 
+    à une prothèse dentaire. Son rôle est de remplacer une dent manquante et d’assurer toutes les fonctions 
+    de la racine naturelle, en servant d’intermédiaire entre l’os de la mâchoire et la prothèse.  
+    Il permet la pose d’une prothèse amovible (dentier) ou d’une prothèse fixe 
+    (bridge, couronne, prothèse complète, etc.).
+  </p>
+  <p className="mb-4">
+    Il existe deux grands types d’implants dentaires :
+    <ul className="list-disc list-inside ml-4">
+      <li><strong>Implants juxtaosseux</strong> : fixés sur l’os de la mâchoire, sous la gencive.</li>
+      <li><strong>Implants endo-osseux</strong> : fixés à l’intérieur même de l’os de la mâchoire.</li>
+    </ul>
+  </p>
+
+  <h3 className="text-xl font-semibold mb-2">Quels sont les avantages d’un implant dentaire ?</h3>
+  <p className="mb-4">
+    Les implants dentaires ne répondent pas uniquement à un besoin esthétique :  
+    <ul className="list-disc list-inside ml-4">
+      <li>Restaurer un sourire harmonieux avec des prothèses adaptées.</li>
+      <li>Améliorer la mastication et l’élocution.</li>
+      <li>Soulager certains troubles articulaires ou musculaires.</li>
+      <li>Prévenir le déplacement des dents adjacentes.</li>
+      <li>Limiter le risque de caries ou maladies parodontales dues à l’accumulation de tartre.</li>
+      <li>Éviter la perte osseuse progressive qui complique la pose d’implants ultérieurement.</li>
+    </ul>
+  </p>
+  <p className="mb-4">
+    Si vous avez perdu une ou plusieurs dents, l’implant dentaire peut vous apporter un confort 
+    considérable au quotidien. Il est recommandé de consulter un spécialiste en implantologie 
+    ou votre chirurgien-dentiste afin de déterminer le type d’implant le plus adapté à vos besoins.
+  </p>
+
+  <h3 className="text-xl font-semibold mb-2">Complications et douleurs possibles</h3>
+  <p className="mb-4">
+    La pose d’un implant se réalise généralement sous anesthésie locale.  
+    Les complications sont rares, mais peuvent inclure :
+    <ul className="list-disc list-inside ml-4">
+      <li>Douleurs après l’intervention, généralement soulagées par des antalgiques.</li>
+      <li>Rejet de l’implant (rare), parfois lié à une mauvaise hygiène ou au tabac.</li>
+      <li>Infections, hémorragies ou lésions nerveuses (cas exceptionnels).</li>
+    </ul>
+  </p>
+
+  <h3 className="text-xl font-semibold mb-2">Quelle est la durée de vie d’un implant ?</h3>
+  <p>
+    Les implants dentaires sont conçus pour durer plusieurs décennies, voire toute une vie.  
+    Leur longévité dépend cependant de nombreux facteurs : l’état de santé général du patient, 
+    la qualité de l’implant, et surtout l’entretien et l’hygiène bucco-dentaire au quotidien.
+  </p>
+</section>
+
+            <div class="detail-photos">
+              <img src="https://blush-madeleine-51.tiiny.site/IMG_0653.jpg" alt="Salle de chirurgie"/>
+              <img src="https://blush-madeleine-51.tiiny.site" alt="Implant dentaire"/>
+            </div>
+          </div>
+          <aside>
+            <strong>Durée moyenne :</strong> 30-120 min<br>
+            <strong>Remboursement :</strong> selon mutuelle<br>
+            <div style="height:12px"></div>
+            <button class="btn" onclick="location.hash=''">Retour</button>
+          </aside>
+        </div>
+      </article>
+
+      <article id="parodontologie" class="detail-page" aria-labelledby="parodontologie-title">
+        <h2 id="parodontologie-title">Parodontologie</h2>
+        <div class="detail-grid">
+          <div>
+           <section id="detail-content" class="detail-section">
+
+  <!-- Facteurs de risque -->
+  <h3>Facteurs de risque de la parodontite</h3>
+  <p>Les facteurs de risque <strong>modifiables</strong> qui contribuent à la parodontite comprennent :</p>
+  <ul>
+    <li>Plaque dentaire</li>
+    <li>Tabagisme</li>
+    <li>Obésité</li>
+    <li>Diabète (en particulier de type 1)</li>
+    <li>Stress émotionnel</li>
+    <li>Carence en vitamine C (scorbut)</li>
+    <li>Changements hormonaux (grossesse, ménopause)</li>
+    <li>Hygiène bucco-dentaire insuffisante (bien qu’elle ne soit pas la seule cause)</li>
+  </ul>
+
+  <p>
+    ⚠️ Il est souvent difficile de distinguer si une maladie est à l'origine de la parodontite 
+    ou si elle y contribue.
+  </p>
+
+  <!-- Diagnostic -->
+  <h3>Diagnostic de la parodontite</h3>
+  <p>
+    L'examen clinique dentaire et parodontal associé au sondage mesurant la profondeur des poches 
+    suffit généralement à établir le diagnostic.  
+    La radiographie dentaire met en évidence une perte d'os alvéolaire adjacente à ces poches.
+  </p>
+
+  <!-- Signes -->
+  <h3>Signes cliniques de la parodontite</h3>
+  <ul>
+    <li>Gencives gonflées</li>
+    <li>Saignement des gencives</li>
+    <li>Mauvaise haleine (halitose)</li>
+    <li>Gencives foncées et/ou rétractées</li>
+    <li>Gencives sensibles</li>
+    <li>Poches parodontales</li>
+    <li>Dents mobiles</li>
+  </ul>
+
+  <!-- Traitement -->
+  <h3>Traitement de la parodontite</h3>
+  <ul>
+    <li>Élimination des facteurs de risque</li>
+    <li>Détartrage et surfaçage radiculaire</li>
+    <li>Antibiotiques locaux et/ou généraux (si nécessaire)</li>
+    <li>Chirurgie ou extraction dans certains cas</li>
+  </ul>
+
+  <p>
+    La modification des facteurs de risque, tels qu'une mauvaise hygiène buccale ou le tabagisme, améliore considérablement les résultats.  
+    Chez les patients diabétiques, un contrôle strict de la glycémie est essentiel.
+  </p>
+
+  <p>
+    La première phase de traitement consiste en un <strong>détartrage</strong> 
+    (nettoyage professionnel avec instruments manuels ou à ultrasons) et un <strong>surfaçage radiculaire</strong> 
+    (élimination du cément et de la dentine malades, suivi d’un polissage).  
+    Une hygiène bucco-dentaire rigoureuse est indispensable : brossage minutieux, fil interdentaire, 
+    tampons de chlorhexidine ou bains de bouche.  
+  </p>
+
+  <p>
+    Un contrôle est effectué à 3 semaines : si les poches ne dépassent pas 4 mm, 
+    un simple nettoyage régulier suffit.  
+    Dans certains cas, une chirurgie par lambeau gingival est pratiquée pour accéder aux zones profondes.
+  </p>
+
+  <!-- Pronostic -->
+  <h3>La parodontite peut-elle se guérir ?</h3>
+  <p>
+    La parodontite peut être efficacement traitée : les bactéries responsables sont éliminées, 
+    l’inflammation est contrôlée et la progression est stoppée grâce à des soins adaptés.  
+    Cependant, la <strong>perte osseuse est irréversible</strong>, car l’os détruit ne se régénère pas.  
+    Il est donc possible de stabiliser la maladie et de préserver la santé bucco-dentaire sur le long terme, 
+    mais pas de “guérir” complètement.
+  </p>
+
+  <!-- Références -->
+  <h3>Références</h3>
+  <ol>
+    <li>
+      Caton JG, Armitage G, Berglundh T, et al.  
+      <em>A new classification scheme for periodontal and peri-implant diseases and conditions – Introduction and key changes from the 1999 classification.</em>  
+      J Periodontol 89(S1), 2018.  
+      <a href="https://doi.org/10.1002/JPER.18-0157" target="_blank">Lien vers l’étude</a>
+    </li>
+    <li>
+      Loesche WJ, Syed SA, Laughon BE, Stoll J.  
+      <em>The bacteriology of acute necrotizing ulcerative gingivitis.</em>  
+      J Periodontol 53: 223–230, 1982.  
+      <a href="https://doi.org/10.1902/jop.1982.53.4.223" target="_blank">Lien vers l’étude</a>
+    </li>
+  </ol>
+
+  <p>
+    Texte rédigé par <strong>James T. Ubertalli, DMD</strong>, Hingham, MA  
+    Revu par <strong>David F. Murchison, DDS, MMS</strong>, The University of Texas at Dallas  
+    Vérifié/Révisé : avril 2024
+  </p>
+</section>
+
+            <div class="detail-photos">
+              <img src="https://images.unsplash.com/photo-1587502536263-3e1b9b1f5b14?auto=format&fit=crop&w=800&q=60" alt="Soin parodontal"/>
+            </div>
+          </div>
+          <aside>
+            <strong>Conseils:</strong> hygiène quotidienne, brossage adapté, usage de brossettes interdentaires.
+            <div style="height:12px"></div>
+            <button class="btn" onclick="location.hash=''">Retour</button>
+          </aside>
+        </div>
+      </article>
+
+      <article id="esthetique" class="detail-page" aria-labelledby="esthetique-title">
+        <h2 id="esthetique-title">Esthétique dentaire</h2>
+        <div class="detail-grid">
+          <div>
+             <!-- Facettes dentaires -->
+  <h3>Facettes dentaires</h3>
+  <p><strong>Elles sont indiquées plus particulièrement pour :</strong></p>
+  <ul>
+    <li>Améliorer la couleur de la dent lorsque le blanchiment dentaire n’apporte pas de solution satisfaisante.</li>
+    <li>Restaurer une dent endommagée.</li>
+    <li>Embellir la forme et la taille des dents.</li>
+    <li>Corriger un petit défaut d’alignement sans passer par un traitement orthodontique.</li>
+    <li>Supprimer un diastème (les « dents du bonheur »).</li>
+  </ul>
+
+  <h4>Quelle est la durée de vie d’une facette dentaire ?</h4>
+  <p>
+    Il a été démontré que la majorité des facettes réalisées en céramique restaient intactes après 12 ans. 
+    Leur durée de vie peut aller jusqu’à <strong>20 ans</strong>.
+  </p>
+
+  <!-- Blanchiment dentaire -->
+  <h3>Blanchiment dentaire</h3>
+  <p>
+    Le blanchiment dentaire est un procédé qui permet d’éclaircir l’émail d’une dent en utilisant une solution blanchissante 
+    (peroxyde de carbamide ou peroxyde d’hydrogène). Cette solution, mise en contact prolongé avec une dent, 
+    « casse » les pigments accumulés avec les années.
+  </p>
+
+  <h4>Le traitement est-il efficace et durable ?</h4>
+  <p>
+    Oui. C’est une méthode éprouvée qui préserve la beauté naturelle des dents. 
+    Selon les habitudes de vie de chacun, l’effet dure de <strong>2 à 5 ans</strong>.
+  </p>
+
+  <h4>Existe-t-il des effets secondaires ou des douleurs possibles ?</h4>
+  <p>
+    Le patient peut ressentir une légère sensibilité dentaire, sans conséquence sur la vitalité des dents. 
+    Cette gêne disparaît rapidement après l’arrêt du traitement. 
+    En cas de forte sensibilité, un traitement antalgique pourra être proposé.  
+    ⚠️ Par précaution, le blanchiment est déconseillé aux femmes enceintes et allaitantes.
+  </p>
+
+  <!-- Aligneur invisible -->
+  <h3>Aligneur invisible</h3>
+  <h4>Qu’est-ce qu’une gouttière invisible ?</h4>
+  <p>
+    Les gouttières invisibles sont des attelles orthodontiques transparentes, très confortables et discrètes, 
+    fabriquées sur mesure. Contrairement aux appareils traditionnels, elles ne nécessitent ni ciment, 
+    ni brackets, ni fils métalliques. Elles sont changées régulièrement pour repositionner progressivement les dents.
+  </p>
+
+  <h4>À quoi sert un aligneur invisible ?</h4>
+  <p>
+    Comme d’autres méthodes orthodontiques, les gouttières invisibles rectifient la position des dents 
+    et corrigent les problèmes de malocclusion. Elles peuvent également être utilisées pour corriger 
+    des pertes de dents, des traumatismes, des lésions de la mâchoire ou certaines malformations congénitales.
+  </p>
+
+  <h4>Combien de temps doivent-elles être portées par jour ?</h4>
+  <p>
+    Pour être efficaces, les gouttières doivent être portées <strong>20 à 22 heures par jour</strong>.  
+    Elles ne sont retirées que pour manger et se brosser les dents.
+  </p>
+
+  <h4>Avantages des gouttières invisibles</h4>
+  <ul>
+    <li>Elles sont pratiquement invisibles : la plupart des gens ne remarqueront pas que vous les portez.</li>
+    <li>Amovibles : elles peuvent être retirées pour manger, boire, se brosser les dents ou utiliser le fil dentaire.</li>
+    <li>Hygiène bucco-dentaire facilitée : réduit le risque de caries par rapport aux appareils fixes traditionnels.</li>
+    <li>Confort : les gouttières sont souples, taillées au niveau de la gencive et s’adaptent parfaitement à la bouche.</li>
+  </ul>
+
+  <p>
+    👉 Si vous avez des doutes ou des questions, votre orthodontiste pourra vous expliquer le fonctionnement 
+    des gouttières invisibles et vous conseiller pour en tirer le meilleur parti.  
+    Elles constituent une option idéale pour obtenir un <strong>sourire parfait</strong>.
+  </p>
+            <div class="detail-photos">
+              <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=60" alt="Sourire esthétique"/>
+            </div>
+          </div>
+          <aside>
+            <strong>Note:</strong> consultation esthétique préalable recommandée.
+            <div style="height:12px"></div>
+            <button class="btn" onclick="location.hash=''">Retour</button>
+          </aside>
+        </div>
+      </article>
+
+      <article id="prothese" class="detail-page" aria-labelledby="prothese-title">
+        <h2 id="prothese-title">Prothese dentaire</h2>
+        <div class="detail-grid">
+          <div>
+            <p>Prothèses fixées et amovibles, couronnes céramiques, bridges, solutions sur implants pour restaurer la fonction et l'esthétique.</p>
+          </div>
+          <aside>
+            <button class="btn" onclick="location.hash=''">Retour</button>
+          </aside>
+        </div>
+      </article>
+
+      <article id="caries" class="detail-page" aria-labelledby="caries-title">
+        <h2 id="caries-title">Traitement des caries</h2>
+        <div class="detail-grid">
+          <div>
+            <p>Diagnostics précoces, obturations esthétiques, inlays/onlays selon la perte tissulaire, et suivi préventif.</p>
+          </div>
+          <aside>
+            <button class="btn" onclick="location.hash=''">Retour</button>
+          </aside>
+        </div>
+      </article>
+
+      <article id="devitalisation" class="detail-page" aria-labelledby="devitalisation-title">
+        <h2 id="devitalisation-title">Dévitalisation et extraction</h2>
+        <div class="detail-grid">
+          <div>
+            <p>Vidéo explicative : <a href="https://youtu.be/tFamW1_CJqM" target="_blank">Regarder sur YouTube</a></p>
+          </div>
+          <aside>
+            <button class="btn" onclick="location.hash=''">Retour</button>
+          </aside>
+        </div>
+      </article>
+
+      <article id="pediatrie" class="detail-page" aria-labelledby="pediatrie-title">
+        <h2 id="pediatrie-title">Soins pédiatriques</h2>
+        <div class="detail-grid">
+          <div>
+            <section id="soins-pediatriques" class="detail-section">
+  <!-- Prévention des caries -->
+  <h3>Comment prévenir l’apparition des caries ?</h3>
+
+  <h4>1. Hygiène bucco-dentaire rigoureuse</h4>
+  <p>
+    Il est nécessaire d’assister votre enfant jusqu’à l’âge de <strong>8 ans</strong>.  
+    Avant cet âge, il est difficile de parler d’autonomie du brossage.  
+    Brossez-vous les dents en même temps que lui, minutiez le temps et contrôlez la qualité du brossage.
+  </p>
+
+  <h4>2. Éviter les grignotages</h4>
+  <p>
+    Les grignotages favorisent la stagnation de sucres et la formation d’acides sur les dents.  
+  </p>
+
+  <h4>3. Ritualiser le brossage</h4>
+  <ul>
+    <li><strong>0 à 6 mois :</strong> Nettoyez les gencives avec une compresse. Placez-vous derrière le bébé pour plus de facilité.</li>
+    <li><strong>6 à 12 mois :</strong> Brossez matin et soir avec une brosse premier âge, seulement à l’eau, dès l’apparition de la première dent.</li>
+    <li><strong>Dès 12 mois :</strong> Laissez l’enfant jouer à imiter le brossage, puis terminez toujours le brossage vous-même, derrière lui et face au miroir.</li>
+    <li><strong>Dès 2 ans :</strong> Le brossage dure maintenant 2 minutes.</li>
+    <li><strong>À partir de 4-5 ans :</strong> On se rince la bouche et on crache. Trouvez des moyens ludiques pour ritualiser le brossage (chansons, jeux, histoires de “monstres qui dévorent les dents”).</li>
+  </ul>
+
+  <!-- Scellement des sillons -->
+  <h4>4. Le scellement des sillons des molaires</h4>
+  <p>
+    L’émail des dents de votre enfant est moins minéralisé que celui des dents adultes.  
+    Les dents permanentes immatures sont plus vulnérables aux caries.  
+    Une solution consiste à <strong>sceller les creux des molaires</strong> avec une résine pour les rendre lisses, empêchant la plaque de se bloquer dans les zones difficiles à nettoyer.  
+    <br>
+    Vidéo explicative : <a href="https://www.youtube.com/watch?v=b8UjyxcEvWI" target="_blank">Regarder sur YouTube</a>
+  </p>
+
+  <!-- Fluorisation -->
+  <h4>5. Application de vernis ou gels fluorés</h4>
+  <p>
+    Au fauteuil, le dentiste applique du fluor pour renforcer les dents.  
+    Si votre enfant présente un fort risque de carie, des <strong>gouttières sur mesure</strong> contenant un gel fluoré peuvent être utilisées, portées tous les soirs pendant plusieurs minutes.
+  </p>
+</section>
+
+          </div>
+          <aside>
+            <button class="btn" onclick="location.hash=''">Retour</button>
+          </aside>
+        </div>
+      </article>
+
+      <article id="meopa" class="detail-page" aria-labelledby="meopa-title">
+        <h2 id="meopa-title">Gaz de détente — MEOPA</h2>
+        <div class="detail-grid">
+          <div>
+            <section id="meopa" class="detail-section">
+  <h3>Qu'est-ce que le MEOPA ?</h3>
+  <p>
+    Le MEOPA (<strong>mélange équimolaire d’oxygène et de protoxyde d’azote</strong>) est un médicament soumis à prescription médicale, 
+    administré par inhalation pour soulager la douleur ou aider les patients à gérer leur anxiété lors d’actes de soins de courte durée.
+  </p>
+
+  <h3>Composition et utilisation</h3>
+  <p>
+    Le MEOPA est un gaz dont le principe actif est le protoxyde d’azote.  
+    En France, il est mélangé à une concentration équimolaire fixe d’oxygène (50 %).  
+    Il est principalement utilisé en milieu hospitalier pour ses propriétés :
+    <ul>
+      <li>Anxiolytiques (réduction de l’anxiété)</li>
+      <li>Analgésiques (soulagement de la douleur)</li>
+    </ul>
+  </p>
+
+  <h3>Importance en soins dentaires et médicaux</h3>
+  <p>
+    Grâce à sa facilité d’administration et son efficacité, l’utilisation du MEOPA s’est régulièrement accrue depuis son autorisation de mise sur le marché.  
+    Il est devenu un outil incontournable dans la lutte contre la douleur et l’anxiété lors de soins médicaux et dentaires.
+  </p>
+</section>
+
+          </div>
+          <aside>
+            <button class="btn" onclick="location.hash=''">Retour</button>
+          </aside>
+        </div>
+      </article>
+
+      <article id="urgence" class="detail-page" aria-labelledby="urgence-title">
+        <h2 id="urgence-title">Urgence dentaire</h2>
+        <div class="detail-grid">
+          <div>
+            <p>
+    Notre cabinet reçoit les patients en urgence selon la <strong>disponibilité du praticien</strong>.  
+    Nous faisons tout notre possible pour vous proposer un rendez-vous dans les plus brefs délais, 
+    en fonction de la disponibilité.
+  </p>
+          </div>
+          <aside>
+            <button class="btn" onclick="location.hash=''">Retour</button>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Contact anchor -->
+      <article id="contact" class="detail-page" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact & Accès</h2>
+        <div class="detail-grid">
+          <div>
+            <p>Adresse: 12 Rue de la Santé, 01200 Nurieux-Volognat</p>
+            <p>Téléphone: +33 4 56 78 90 12</p>
+            <p>Email: contact@cabinet-dentaire.fr</p>
+            <form onsubmit="event.preventDefault();alert('Formulaire de contact — ceci est une démo front uniquement.');">
+              <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+                <input required placeholder="Nom" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6eef0" />
+                <input required placeholder="Téléphone" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6eef0" />
+                <textarea required placeholder="Message" style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef0;margin-top:8px"></textarea>
+                <button class="btn" type="submit">Envoyer</button>
+              </div>
+            </form>
+          </div>
+          <aside>
+            <div style="background:#eef6f6;border-radius:10px;padding:10px">Plan d'accès (insérez carte Google Maps ici)</div>
+          </aside>
+        </div>
+      </article>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Cabinet Dentaire — Tous droits réservés
+    </footer>
+  </div>
+
+  <script>
+    // ====== Utilitaires & variables ======
+    const slidesEl = document.getElementById('slides');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dotsEl = document.getElementById('dots');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let index = 0;
+    const total = slides.length;
+    let autoplay = true;
+    let timer = null;
+
+    // Create dots
+    slides.forEach((s, i) =>{
+      const b = document.createElement('button');
+      b.setAttribute('aria-label','Aller à la photo '+(i+1));
+      b.addEventListener('click', ()=> goTo(i));
+      dotsEl.appendChild(b);
+    });
+    const dots = Array.from(dotsEl.querySelectorAll('button'));
+
+    function update(){
+      slidesEl.style.transform = `translateX(${ -index * 100 }%)`;
+      dots.forEach((d, i)=> d.style.background = i===index ? 'var(--primary)' : 'rgba(2,6,23,0.08)');
+    }
+
+    function goTo(i){ index = (i + total) % total; update(); resetTimer(); }
+    function next(){ index = (index+1) % total; update(); }
+    function prev(){ index = (index-1+total) % total; update(); }
+
+    nextBtn.addEventListener('click', ()=>{ next(); });
+    prevBtn.addEventListener('click', ()=>{ prev(); });
+
+    // Auto-play
+    function startTimer(){ if(!autoplay) return; timer = setInterval(()=> next(), 4500); }
+    function resetTimer(){ if(timer) clearInterval(timer); startTimer(); }
+    startTimer();
+
+    // Pause autoplay on hover for accessibility
+    document.getElementById('carousel').addEventListener('mouseenter', ()=>{ autoplay=false; if(timer) clearInterval(timer); });
+    document.getElementById('carousel').addEventListener('mouseleave', ()=>{ autoplay=true; resetTimer(); });
+
+    // Services click -> navigate to hash detail
+    document.querySelectorAll('#services-grid .card').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        const target = card.dataset.target;
+        location.hash = target;
+      });
+    });
+
+    // Hash routing: show the right detail page
+    function showFromHash(){
+      const h = location.hash.replace('#','');
+      document.querySelectorAll('.detail-page').forEach(p=>p.classList.remove('active'));
+      if(!h){ window.scrollTo({top:0,behavior:'smooth'}); return; }
+      const el = document.getElementById(h);
+      if(el){ el.classList.add('active'); el.scrollIntoView({behavior:'smooth'}); }
+    }
+
+    window.addEventListener('hashchange', showFromHash);
+    // run on load in case link opened with hash
+    showFromHash();
+
+    // Small animation for header when scrolling
+    let lastScroll = 0; const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', ()=>{
+      const s = window.scrollY;
+      if(s>60) header.style.transform = 'translateY(-6px)'; else header.style.transform='none';
+      lastScroll = s;
+    });
+
+    // Fill year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Accessibility: keyboard navigation for carousel
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowRight') next();
+      if(e.key === 'ArrowLeft') prev();
+    });
+
+    // Note: JS used only for front animations & simple hash-routing. No backend interaction.
+  </script>
+</body>
+</html>
